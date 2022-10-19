@@ -1,5 +1,3 @@
-import { truncate } from "fs";
-
 class WeatherData {
     public time: Date;
     public location: string;
