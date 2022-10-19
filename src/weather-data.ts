@@ -1,5 +1,7 @@
+import formatDateTime from './format-datetime.js';
+
 class WeatherData {
-    public time: Date;
+    public dateTime: string;
     public location: string;
     public weatherCategory: string;
     public weatherDescription: string;
@@ -8,12 +10,12 @@ class WeatherData {
     public pressure: number;
     public windSpeed: number;
     public windDirection: number;
-    public sunrise: Date;
-    public sunset: Date;
+    public sunrise: string;
+    public sunset: string;
     public units: string;
 
     constructor(data: any, units = 'metric') {
-        this.time = new Date(data.dt * 1000);
+        this.dateTime = formatDateTime(new Date((data.dt * 1000) + (data.timezone * 1000)));
         this.location = data.name;
         this.weatherCategory = data.weather[0].main;
         this.weatherDescription = data.weather[0].description;
@@ -22,8 +24,8 @@ class WeatherData {
         this.pressure = this.truncate(data.main.pressure);
         this.windSpeed = this.truncate(data.wind.speed);
         this.windDirection = this.truncate(data.wind.deg);
-        this.sunrise = new Date(data.sys.sunrise * 1000);
-        this.sunset = new Date(data.sys.sunset * 1000);
+        this.sunrise = formatDateTime(new Date((data.sys.sunrise * 1000) + (data.timezone * 1000)));
+        this.sunset = formatDateTime(new Date((data.sys.sunset * 1000) + (data.timezone * 1000)));
         this.units = units;
     }
 

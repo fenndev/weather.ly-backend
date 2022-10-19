@@ -4,6 +4,9 @@
         "resolveJsonModule": true,
         "isolatedModules": true,
         "sourceMap": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": false,
+        "noImplicitReturns": true,
         "outDir": "dist"
     },
     "include": ["src"]
