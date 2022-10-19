@@ -1,0 +1,19 @@
+{
+  "name": "weather.ly-backend",
+  "version": "1.0.0",
+  "description": "The backend for the weather.ly project.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fenndev/weather.ly-backend.git"
+  },
+  "author": "fenndev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/fenndev/weather.ly-backend/issues"
+  },
+  "homepage": "https://github.com/fenndev/weather.ly-backend#readme"
+}
