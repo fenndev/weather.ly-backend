@@ -31,10 +31,10 @@ function formatDateTime(utcTime: number, timezoneOffset: number): string {
     const hours = toTwentyFourHour(date.getUTCHours() + timezoneOffset / 3600);
     const minutes = timeZeroPad(date.getUTCMinutes());
     const amPM = amOrPM(date.getUTCHours());
-    const day = date.getUTCDate() - Math.floor(timezoneOffset / 86400);
+    const day = date.getUTCDate() + Math.floor(timezoneOffset / 86400);
     const suffix = ndSuffix(day);
-    const month = fullMonthName(date.getUTCMonth() - Math.floor(timezoneOffset / 2592000));
-    const year = date.getUTCFullYear() - Math.floor(timezoneOffset / 31536000);
+    const month = fullMonthName(date.getUTCMonth() + Math.floor(timezoneOffset / 2592000));
+    const year = date.getUTCFullYear() + Math.floor(timezoneOffset / 31536000);
     return `${month} ${day}${suffix}, ${year} ${hours}:${minutes} ${amPM}`;
 }
 
