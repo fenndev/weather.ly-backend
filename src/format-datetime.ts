@@ -1,7 +1,14 @@
-function amOrPM(date: Date): string { return date.getHours() < 12 ? 'AM' : 'PM' };
+function amOrPM(hour: number): string { return hour >= 12 ? 'PM' : 'AM' };
 
 function timeZeroPad(time: number): string {
     return time < 10 ? `0${time}` : time.toString();
+}
+
+function toTwentyFourHour(hour: number): string {
+    let parsedHour: number;
+    if(hour > 12) parsedHour = hour - 12;
+    else parsedHour = hour;
+    return timeZeroPad(parsedHour);
 }
 
 function fullMonthName(month: number): string {
@@ -32,8 +39,17 @@ function ndSuffix(num: number): string {
     }
 }
 
-function formatDateTime(date: Date): string {
-    return `${fullMonthName(date.getMonth())} ${date.getDate()}${ndSuffix(date.getDate())}, ${date.getFullYear()} ${timeZeroPad(date.getHours())}:${timeZeroPad(date.getMinutes())} ${amOrPM(date)}`;
+function formatDateTime(utcTime: number, timezoneOffset: number): string {
+    const date = new Date(((utcTime * 1000) + timezoneOffset));
+    const hours = toTwentyFourHour(date.getUTCHours() + timezoneOffset / 3600);
+    const minutes = timeZeroPad(date.getUTCMinutes());
+    const amPM = amOrPM(date.getUTCHours());
+    const day = date.getUTCDate() - Math.floor(timezoneOffset / 86400);
+    const suffix = ndSuffix(day);
+    const month = fullMonthName(date.getUTCMonth() - Math.floor(timezoneOffset / 2592000));
+    const year = date.getUTCFullYear() - Math.floor(timezoneOffset / 31536000);
+    return `${month} ${day}${suffix}, ${year} ${hours}:${minutes} ${amPM}`;
 }
+
 
 export default formatDateTime;

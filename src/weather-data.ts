@@ -15,7 +15,8 @@ class WeatherData {
     public units: string;
 
     constructor(data: any, units = 'metric') {
-        this.dateTime = formatDateTime(new Date((data.dt * 1000) + (data.timezone * 1000)));
+        const formattedDateTime = formatDateTime(data.dt, data.timezone);
+        this.dateTime = formattedDateTime;
         this.location = data.name;
         this.weatherCategory = data.weather[0].main;
         this.weatherDescription = data.weather[0].description;
@@ -24,8 +25,8 @@ class WeatherData {
         this.pressure = this.truncate(data.main.pressure);
         this.windSpeed = this.truncate(data.wind.speed);
         this.windDirection = this.truncate(data.wind.deg);
-        this.sunrise = formatDateTime(new Date((data.sys.sunrise * 1000) + (data.timezone * 1000)));
-        this.sunset = formatDateTime(new Date((data.sys.sunset * 1000) + (data.timezone * 1000)));
+        this.sunrise = formatDateTime(data.sys.sunrise, data.timezone);
+        this.sunset = formatDateTime(data.sys.sunset, data.timezone);
         this.units = units;
     }
 
