@@ -1,7 +1,8 @@
 import express from 'express';
-import fetch from 'node-fetch';
 import WeatherData from './weather-data.js';
+import queryWeather from './fetch-weather.js';
 import * as dotenv from 'dotenv';
+import geolocateByCity from './geolocate.js';
 dotenv.config();
 
 const app = express();
@@ -14,12 +15,7 @@ app.get('/', (req, res) => {
 
 app.listen(process.env.PORT, async() => {
     console.log(`Server started on port ${process.env.PORT}`);
-    const weatherData = await getWeatherData(lat, lon);
+    const {newLat, newLong} = await geolocateByCity('Seattle');
+    const weatherData = await queryWeather(newLat, newLong);
     console.log(weatherData);
 });
-
-async function getWeatherData(lat: number, lon: number): Promise<WeatherData> {
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.API_KEY}&units=metric`;
-    const response = await (await fetch(url)).json();
-    return new WeatherData(response);
-}
