@@ -2,8 +2,8 @@ import formatDateTime from './format-datetime.js';
 class WeatherData {
     public dateTime: string;
     public location: string;
-    public weatherCategory: string;
-    public weatherDescription: string;
+    public category: string;
+    public description: string;
     public temperature: number;
     public humidity: number;
     public pressure: number;
@@ -16,8 +16,8 @@ class WeatherData {
     constructor(data: any, units = 'metric') {
         this.dateTime = formatDateTime(data.dt, data.timezone);
         this.location = data.name;
-        this.weatherCategory = data.weather[0].main;
-        this.weatherDescription = data.weather[0].description;
+        this.category = data.weather[0].main;
+        this.description = data.weather[0].description.replace(/(^\w{1})|(\s+\w{1})/g, (letter: string) => letter.toUpperCase());;
         this.temperature = this.truncate(data.main.temp);
         this.humidity = this.truncate(data.main.humidity);
         this.pressure = this.truncate(data.main.pressure);
