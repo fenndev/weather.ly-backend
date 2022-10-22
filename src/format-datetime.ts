@@ -5,7 +5,7 @@ dayjs.extend(advancedFormat);
 dayjs.extend(utc);
 
 function formatDateTime(utcTime: number, timezoneOffset: number): string { 
-    return dayjs.utc(dayjs.unix(utcTime)).utcOffset(timezoneOffset / 60).format('dddd, MMMM D, YYYY h:mm A');
+    return dayjs.utc(dayjs.unix(utcTime)).utcOffset(timezoneOffset / 60).format('dddd, MMMM Do, YYYY h:mm A');
 }
 
 export default formatDateTime;
