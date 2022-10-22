@@ -1,5 +1,4 @@
 import formatDateTime from './format-datetime.js';
-
 class WeatherData {
     public dateTime: string;
     public location: string;
@@ -15,8 +14,7 @@ class WeatherData {
     public units: string;
 
     constructor(data: any, units = 'metric') {
-        const formattedDateTime = formatDateTime(data.dt, data.timezone);
-        this.dateTime = formattedDateTime;
+        this.dateTime = formatDateTime(data.dt, data.timezone);
         this.location = data.name;
         this.weatherCategory = data.weather[0].main;
         this.weatherDescription = data.weather[0].description;
