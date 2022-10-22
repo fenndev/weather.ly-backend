@@ -1,4 +1,4 @@
-import express from 'express';
+import express, { query } from 'express';
 import WeatherData from './weather-data.js';
 import queryWeather from './fetch-weather.js';
 import * as dotenv from 'dotenv';
@@ -15,7 +15,15 @@ app.get('/', (req, res) => {
 
 app.listen(process.env.PORT, async() => {
     console.log(`Server started on port ${process.env.PORT}`);
-    const {newLat, newLong} = await geolocate('tacoma', 'wa', 'united states of america');
+    const {newLat, newLong} = await geolocate('Tacoma, Washington');
     const weatherData = await queryWeather(newLat, newLong);
     console.log(weatherData);
+});
+
+app.get('/:query', async(req: any, res) => {
+  let queryString = req.params.query;
+  let queryArray = queryString.split(',');
+  const {newLat, newLong} = await geolocate(queryArray);
+  const weatherData = await queryWeather(newLat, newLong);
+  res.send(weatherData);
 });
