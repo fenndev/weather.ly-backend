@@ -10,8 +10,14 @@ app.listen(process.env.PORT, async() => {
 });
 
 app.get('/:query', async(req: any, res) => {
-  let queryString = req.params.query;
-  let queryArray = queryString.split(',');
-  const weatherData = await queryWeather(queryArray);
-  res.send(weatherData);
+  try {
+    let queryString = req.params.query;
+    let queryArray = queryString.split(',');
+    const weatherData = await queryWeather(queryArray);
+    res.send(weatherData);
+  }
+  catch (err) {
+    res.send(err);
+  }
+  
 });
