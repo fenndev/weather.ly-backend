@@ -3,7 +3,7 @@
     "compilerOptions": {
         "resolveJsonModule": true,
         "isolatedModules": true,
-        "sourceMap": true,
+        "sourceMap": false,
         "noUnusedLocals": false,
         "noUnusedParameters": false,
         "noImplicitReturns": true,

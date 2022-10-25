@@ -1,5 +1,4 @@
 import express, { query } from 'express';
-import WeatherData from './weather-data.js';
 import queryWeather from './query-weather.js';
 import * as dotenv from 'dotenv';
 dotenv.config();
