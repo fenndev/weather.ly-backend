@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon dist/server.js",
-    "build": "tsc && node dist/server.js"
+    "build": "tsc && nodemon dist/server.js"
   },
   "repository": {
     "type": "git",
