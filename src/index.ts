@@ -9,11 +9,16 @@ dayjs.extend(utc);
 const app = express();
 
 export default async function queryHandler(req: any, res: any) {
-    let queryString = req.params.query;
-    let queryArray = queryString.split(',');
-    const weatherData = await queryWeather(queryArray);
+  let params = (new URL(req.url)).searchParams;
+    let queryString = params.get('q');
+    if(queryString == null) {
+        res.status(400).send('No query string provided');
+        return;
+    }
+    const weatherData = await queryWeather(queryString);
     console.log(weatherData);
     res.status(200).json({
+      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
       body: weatherData
     });
 };
