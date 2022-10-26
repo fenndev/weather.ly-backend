@@ -14,7 +14,7 @@
         "noUnusedLocals": false,
         "noUnusedParameters": false,
         "noImplicitReturns": true,
-        "outDir": "dist"
+        "outDir": "api"
     },
     "include": ["src"]
 }

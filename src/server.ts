@@ -13,16 +13,14 @@ app.listen(process.env.PORT, async() => {
     console.log(`Server started on port ${process.env.PORT}`);
 });
 
-app.get('/:query', async(req: any, res) => {
-  try {
+export default async function queryHandler(req: any, res: any) {
     let queryString = req.params.query;
     let queryArray = queryString.split(',');
     const weatherData = await queryWeather(queryArray);
     console.log(weatherData);
-    res.send(weatherData);
-  }
-  catch (err) {
-    res.send(err);
-  }
-  
-});
+    res.status(200).json({
+      body: weatherData
+    });
+};
+
+module.exports = queryHandler;

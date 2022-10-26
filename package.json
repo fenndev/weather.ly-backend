@@ -5,9 +5,7 @@
   "main": "dist/server.js",
   "type": "module",
   "scripts": {
-    "dev": "nodemon dist/server.js",
-    "build": "tsc",
-    "start": "node dist/server.js"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
