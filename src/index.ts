@@ -13,12 +13,12 @@ export default async function queryHandler(req: any, res: any) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     let queryString = params.get('q');
     if(queryString == null) {
-        res.status(400).send('No query string provided');
-        return;
+        return res.status(400).send('No query string provided');
+        
     }
     const weatherData = await queryWeather(queryString);
     // Enable CORS
-    res.status(200).send(weatherData);
+    return res.status(200).send(weatherData);
 };
 
 
