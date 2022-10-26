@@ -17,8 +17,8 @@ export default async function queryHandler(req: any, res: any) {
     }
     const weatherData = await queryWeather(queryString);
     console.log(weatherData);
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.status(200).json({
-      headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
       body: weatherData
     });
 };
