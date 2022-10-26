@@ -16,11 +16,9 @@ export default async function queryHandler(req: any, res: any) {
         return;
     }
     const weatherData = await queryWeather(queryString);
-    console.log(weatherData);
+    // Enable CORS
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.status(200).json({
-      body: weatherData
-    });
+    res.status(200).send(weatherData);
 };
 
 
