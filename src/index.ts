@@ -9,7 +9,8 @@ dayjs.extend(utc);
 const app = express();
 
 export default async function queryHandler(req: any, res: any) {
-  let params = (new URL(req.url)).searchParams;
+    let params = (new URL(req.url)).searchParams;
+    res.setHeader('Access-Control-Allow-Origin', '*');
     let queryString = params.get('q');
     if(queryString == null) {
         res.status(400).send('No query string provided');
@@ -17,7 +18,6 @@ export default async function queryHandler(req: any, res: any) {
     }
     const weatherData = await queryWeather(queryString);
     // Enable CORS
-    res.setHeader('Access-Control-Allow-Origin', '*');
     res.status(200).send(weatherData);
 };
 
