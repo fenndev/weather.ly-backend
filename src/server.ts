@@ -18,7 +18,8 @@ app.get('/:query', async(req: any, res) => {
     let queryString = req.params.query;
     let queryArray = queryString.split(',');
     const weatherData = await queryWeather(queryArray);
-    console.log(weatherData);
+    res.setHeader('Content-Type', 'application/json');
+    res.setHeader('Access-Control-Allow-Origin', '*');
     res.send(weatherData);
   }
   catch (err) {
