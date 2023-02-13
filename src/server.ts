@@ -1,6 +1,6 @@
 import express, { query } from 'express';
 import cors from 'cors'
-import queryWeather from './query-weather.js';
+import queryWeather from './functions/QueryWeather.js';
 import * as dotenv from 'dotenv';
 dotenv.config();
 import WeatherData from './classes/WeatherData.js';
