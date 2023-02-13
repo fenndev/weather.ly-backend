@@ -1,11 +1,11 @@
 import axios from "axios";
-import WeatherData from "./classes/WeatherData.js";
-import LocationResponse from "./interfaces/LocationResponse.js";
-import WeatherResponse from "./interfaces/WeatherResponse.js";
+import WeatherData from "../classes/WeatherData.js";
+import LocationResponse from "../interfaces/LocationResponse.js";
+import WeatherResponse from "../interfaces/WeatherResponse.js";
 
 async function getWeatherData(
   query: string,
-  units = "metric"
+  units: string
 ): Promise<WeatherData> {
   try {
     let weatherData: WeatherData;
