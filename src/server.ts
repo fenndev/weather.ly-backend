@@ -1,6 +1,6 @@
 import express, { query } from 'express';
 import cors from 'cors'
-import queryWeather from './functions/QueryWeather.js';
+import getWeatherData from './functions/QueryWeather.js';
 import * as dotenv from 'dotenv';
 dotenv.config();
 const app = express();
@@ -11,9 +11,8 @@ app.get('/', async(req: any, res) => {
   try {
     let queryString = req.query.q;
     let queryArray = queryString.split(',');
-    let unitSystem;
-    req.query.units ? unitSystem = req.query.units : unitSystem = 'imperial';
-    const weatherData = await queryWeather(queryArray, unitSystem);
+    let unitSystem = req.query.units;
+    const weatherData = await getWeatherData(queryArray, unitSystem);
     res.send(weatherData);
   }
   catch (err) {
