@@ -1,16 +1,15 @@
 export default interface WeatherResponse {
     main: {
-      temp: number;
-      humidity: number;
+        temp: number;
+        humidity: number;
     };
     weather: [
-      {
-        main: string;
-        id: number;
-      }
+        {
+            main: string;
+            id: number;
+        }
     ];
     wind: {
-      speed: number;
+        speed: number;
     };
-  }
-  
+}

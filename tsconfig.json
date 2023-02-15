@@ -1,8 +1,8 @@
 {
     "compilerOptions": {
         "lib": ["es2020"],
-        "module": "ES6",
-        "target": "es2020",
+        "module": "Node16",
+        "target": "ES2020",
         "strict": true,
         "esModuleInterop": true,
         "skipLibCheck": true,
@@ -16,5 +16,5 @@
         "noImplicitReturns": true,
         "outDir": "dist"
     },
-    "include": ["src"]
+    "include": ["src", ".eslintrc"]
 }

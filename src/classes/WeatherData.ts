@@ -10,34 +10,34 @@ export default class WeatherData {
     public unitSystem: string;
     public temperatureUnits: string;
     public windSpeedUnits: string;
-  
+
     constructor(
-      city: string,
-      state: string | undefined,
-      country: string,
-      temperature: number,
-      weatherType: string,
-      weatherID: number,
-      windSpeed: number,
-      humidity: number,
-      unitSystem: string
+        city: string,
+        state: string | undefined,
+        country: string,
+        temperature: number,
+        weatherType: string,
+        weatherID: number,
+        windSpeed: number,
+        humidity: number,
+        unitSystem: string
     ) {
-      this.cityName = city.toLowerCase();
-      this.stateName = state?.toLowerCase();
-      this.countryName = country.toLowerCase();
-      this.temperature = Number.parseFloat(temperature.toFixed(1));
-      this.weatherType = weatherType.toLowerCase();
-      this.weatherID = weatherID;
-      this.windSpeed = Number.parseFloat(windSpeed.toFixed(1));
-      this.humidity = humidity;
-      this.unitSystem = unitSystem;
-  
-      if (unitSystem == "metric") {
-        this.temperatureUnits = "°C";
-        this.windSpeedUnits = "kph";
-      } else {
-        this.temperatureUnits = "°F";
-        this.windSpeedUnits = "mph";
-      }
+        this.cityName = city;
+        this.stateName = state;
+        this.countryName = country;
+        this.temperature = Number.parseFloat(temperature.toFixed(1));
+        this.weatherType = weatherType;
+        this.weatherID = weatherID;
+        this.windSpeed = Number.parseFloat(windSpeed.toFixed(1));
+        this.humidity = humidity;
+        this.unitSystem = unitSystem;
+
+        if (unitSystem == 'metric') {
+            this.temperatureUnits = '°C';
+            this.windSpeedUnits = 'kph';
+        } else {
+            this.temperatureUnits = '°F';
+            this.windSpeedUnits = 'mph';
+        }
     }
-  }
+}

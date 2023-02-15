@@ -4,4 +4,4 @@ export default interface LocationResponse {
     name: string;
     state: string | undefined;
     country: string;
-  }
+}
