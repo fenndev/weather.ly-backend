@@ -13,7 +13,6 @@ app.get('/', async (req, res) => {
     if (!req.query.q) res.send('Server online.');
     try {
         const queryString: string = encodeURIComponent(req.query.q as string);
-        console.log(queryString);
         const unitSystem = encodeURIComponent(req.query.units as string);
         const weatherData: WeatherData = await getWeatherData(
             queryString,

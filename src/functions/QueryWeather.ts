@@ -41,10 +41,12 @@ async function queryLocation(query: string): Promise<LocationResponse> {
         const response = await axios.get(
             `https://api.openweathermap.org/geo/1.0/direct?q=${sanitizedQuery}&limit=1&appid=${process.env.API_KEY}`
         );
-        const responseObj = (await response.data) as object;
+        const responseObj = (await response.data) as object[];
         if (Object.keys(responseObj).length == 0)
             throw new Error(`Location not found: ${query}`);
-        const location: LocationResponse = responseObj as LocationResponse;
+        const location: LocationResponse = (
+            responseObj as LocationResponse[]
+        )[0];
         return location;
     } catch (error: unknown) {
         if (error instanceof AxiosError) {
