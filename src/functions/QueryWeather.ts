@@ -3,15 +3,13 @@ import WeatherData from '../classes/WeatherData.js';
 import LocationResponse from '../interfaces/LocationResponse.js';
 import WeatherResponse from '../interfaces/WeatherResponse.js';
 import getErrorMessage from './GetErrorMessage.js';
-import sanitizeQuery from './SanitizeQuery.js';
 
 async function getWeatherData(
     query: string,
     units: string
 ): Promise<WeatherData> {
     try {
-        const sanitizedQuery = sanitizeQuery(query);
-        const location: LocationResponse = await queryLocation(sanitizedQuery);
+        const location: LocationResponse = await queryLocation(query);
         const weather: WeatherResponse = await fetchWeather(
             location.lat,
             location.lon,
@@ -37,10 +35,9 @@ async function getWeatherData(
 
 async function queryLocation(query: string): Promise<LocationResponse> {
     if (!process.env.API_KEY) throw new Error('No API key provided.');
-    const sanitizedQuery = sanitizeQuery(query);
     try {
         const response = await axios.get(
-            `https://api.openweathermap.org/geo/1.0/direct?q=${sanitizedQuery}&limit=1&appid=${process.env.API_KEY}`
+            `https://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=1&appid=${process.env.API_KEY}`
         );
         const responseObj = (await response.data) as object[];
         if (Object.keys(responseObj).length == 0)
