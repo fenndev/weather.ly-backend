@@ -27,6 +27,7 @@ async function getWeatherData(
             weather.weather[0].id,
             weather.wind.speed,
             weather.main.humidity,
+            weather.main.pressure,
             units
         );
     } catch (error: unknown) {

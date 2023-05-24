@@ -7,6 +7,7 @@ export default class WeatherData {
     public weatherID: number;
     public windSpeed: number;
     public humidity: number;
+    public pressure: number;
     public unitSystem: string;
     public temperatureUnits: string;
     public windSpeedUnits: string;
@@ -20,6 +21,7 @@ export default class WeatherData {
         weatherID: number,
         windSpeed: number,
         humidity: number,
+        pressure: number,
         unitSystem: string
     ) {
         this.cityName = city;
@@ -30,6 +32,7 @@ export default class WeatherData {
         this.weatherID = weatherID;
         this.windSpeed = Number.parseFloat(windSpeed.toFixed(1));
         this.humidity = humidity;
+        this.pressure = pressure;
         this.unitSystem = unitSystem;
 
         if (unitSystem == 'metric') {
