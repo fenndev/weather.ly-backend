@@ -6,10 +6,17 @@ import getErrorMessage from './functions/GetErrorMessage.js';
 import WeatherData from './classes/WeatherData.js';
 dotenv.config();
 const app = express();
-app.use(cors());
+const corsOptions = {
+    origin: [
+        'https://weather-ly-fenndev.vercel.app',
+        'https://weather-ly-weld.vercel.app',
+        'https://weather-ly-git-main-fenndev.vercel.app',
+    ],
+    methods: 'GET',
+};
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
-app.get('/', async (req, res) => {
+app.get('/', cors(corsOptions), async (req, res) => {
     if (!req.query.q) res.send('Server online.');
     try {
         const queryString: string = encodeURIComponent(req.query.q as string);
