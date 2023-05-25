@@ -6,7 +6,7 @@ import getErrorMessage from './functions/GetErrorMessage.js';
 import WeatherData from './classes/WeatherData.js';
 dotenv.config();
 const app = express();
-app.use(cors);
+app.use(cors());
 // const allowedOrigins = [
 //     'https://weather-ly-fenndev.vercel.app',
 //     'https://weather-ly-weld.vercel.app',
