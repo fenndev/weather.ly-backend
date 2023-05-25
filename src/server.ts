@@ -6,23 +6,24 @@ import getErrorMessage from './functions/GetErrorMessage.js';
 import WeatherData from './classes/WeatherData.js';
 dotenv.config();
 const app = express();
-const allowedOrigins = [
-    'https://weather-ly-fenndev.vercel.app',
-    'https://weather-ly-weld.vercel.app',
-    'https://weather-ly-git-main-fenndev.vercel.app',
-];
-const corsOptions: cors.CorsOptions = {
-    origin: (origin, callback) => {
-        if (origin && allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error(`Request sent from an unauthorized domain.`));
-        }
-    },
-    methods: 'GET',
-    optionsSuccessStatus: 200,
-};
-app.use(cors(corsOptions));
+app.use(cors);
+// const allowedOrigins = [
+//     'https://weather-ly-fenndev.vercel.app',
+//     'https://weather-ly-weld.vercel.app',
+//     'https://weather-ly-git-main-fenndev.vercel.app',
+// ];
+// const corsOptions: cors.CorsOptions = {
+//     origin: (origin, callback) => {
+//         if (origin && allowedOrigins.includes(origin)) {
+//             callback(null, true);
+//         } else {
+//             callback(new Error(`Request sent from an unauthorized domain.`));
+//         }
+//     },
+//     methods: 'GET',
+//     optionsSuccessStatus: 200,
+// };
+// app.use(cors(corsOptions));
 
 // eslint-disable-next-line @typescript-eslint/no-misused-promises
 app.get('/', async (req, res, next) => {
