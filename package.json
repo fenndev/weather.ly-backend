@@ -1,6 +1,6 @@
 {
     "name": "weather.ly-backend",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "The RESTful backend for the weather.ly project.",
     "type": "module",
     "scripts": {

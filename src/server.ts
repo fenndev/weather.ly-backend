@@ -2,7 +2,6 @@ import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
 import getWeatherData from './functions/QueryWeather.js';
 import * as dotenv from 'dotenv';
-import getErrorMessage from './functions/GetErrorMessage.js';
 import WeatherData from './classes/WeatherData.js';
 dotenv.config();
 const app = express();
