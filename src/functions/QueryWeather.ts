@@ -2,7 +2,6 @@ import axios, { AxiosError } from 'axios';
 import WeatherData from '../classes/WeatherData.js';
 import LocationResponse from '../interfaces/LocationResponse.js';
 import WeatherResponse from '../interfaces/WeatherResponse.js';
-import getErrorMessage from './GetErrorMessage.js';
 
 async function getWeatherData(
     query: string,
@@ -28,8 +27,8 @@ async function getWeatherData(
             weather.main.pressure,
             units
         );
-    } catch (error: unknown) {
-        throw new Error(getErrorMessage(error));
+    } catch (error) {
+        throw new Error(String(error));
     }
 }
 
@@ -56,7 +55,7 @@ async function queryLocation(query: string): Promise<LocationResponse> {
                 );
             }
         } else {
-            throw new Error(`${getErrorMessage(error)}`);
+            throw new Error(String(error));
         }
     }
 }
@@ -75,7 +74,7 @@ async function fetchWeather(
                 (await response.data) as WeatherResponse;
             return weather;
         } catch (error: unknown) {
-            throw new Error(getErrorMessage(error));
+            throw new Error(String(error));
         }
     } else throw new Error('No API key provided.');
 }

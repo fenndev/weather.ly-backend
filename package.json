@@ -1,7 +1,7 @@
 {
     "name": "weather.ly-backend",
-    "version": "1.0.1",
-    "description": "The backend for the weather.ly project.",
+    "version": "1.0.2",
+    "description": "The RESTful backend for the weather.ly project.",
     "type": "module",
     "scripts": {
         "build": "tsc",
@@ -15,7 +15,7 @@
         "url": "git+https://github.com/fenndev/weather.ly-backend.git"
     },
     "author": "fenndev",
-    "license": "MIT",
+    "license": "GPL-3.0-or-later",
     "bugs": {
         "url": "https://github.com/fenndev/weather.ly-backend/issues"
     },
